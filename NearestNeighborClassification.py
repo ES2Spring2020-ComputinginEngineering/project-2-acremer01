@@ -62,10 +62,7 @@ def kNearestNeighborClassifier(k, newglucose, newhemoglobin, glucose, hemoglobin
     for i in range(len(kclassifications)):
         if kclassifications[i]==1:
             count+=1
-    if int(count/len(kclassifications))==0:
-        return 0.0
-    else:
-        return 1.0
+    return float(int(count/len(kclassifications)))
 
 def graphTestCase(newglucose, newhemoglobin, glucose, hemoglobin, classification):
     plt.figure()
