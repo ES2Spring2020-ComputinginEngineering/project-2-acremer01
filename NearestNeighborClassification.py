@@ -31,27 +31,57 @@ def graphData(glucose, hemoglobin, classification):
     plt.show()
     
 def createTestCase():
-    newhemoglobin=random.randint(3.1,17.8)
-    newglucose=random.randint(70,490)
+    newhemoglobin=random.uniform(3.1,17.8)
+    newglucose=random.uniform(70,490)
     return newhemoglobin, newglucose
 
 def calculateDistanceArray(newglucose, newhemoglobin, glucose, hemoglobin):
     newglucose=(newglucose-70)/(490-70)
     newhemoglobin=(newhemoglobin-3.1)/(17.8-3.1)
-    glucose, hemoglobin, classification=normalizedata(glucose, hemoglobin, classification)
+    classification=0
+    glucose, hemoglobin, classification=normalizeData(glucose, hemoglobin, classification)
     distancelist=[]
-    for i in len(glucose):
-        distance=math.sqrt((newglucose-glucose)**2+(newhemoglobin-hemoglobin)**2)
+    for i in range(len(glucose)):
+        distance=math.sqrt((newglucose-glucose[i])**2+(newhemoglobin-hemoglobin[i])**2)
         distancelist.append(distance)
     distancearray=np.array(distancelist)
     return distancearray
 
 def nearestNeighborClassifier(newglucose, newhemoglobin, glucose, hemoglobin, classification):
+    distancearray=calculateDistanceArray(newglucose, newhemoglobin, glucose, hemoglobin)
+    minindex=np.argmin(distancearray)
+    classif=classification[minindex]
+    return classif
+
+def kNearestNeighborClassifier(k, newglucose, newhemoglobin, glucose, hemoglobin, classification):
+    distancearray=calculateDistanceArray(newglucose, newhemoglobin, glucose, hemoglobin)
+    sortedindices=np.argsort(distancearray)
+    kindices=sortedindices[:k]
+    kclassifications=classification[kindices]
+    count=0
+    for i in range(len(kclassifications)):
+        if kclassifications[i]==1:
+            count+=1
+    if int(count/len(kclassifications))==0:
+        return 0.0
+    else:
+        return 1.0
+
+def graphTestCase(newglucose, newhemoglobin, glucose, hemoglobin, classification):
+    plt.figure()
+    glucose, hemoglobin, classification = normalizeData(glucose, hemoglobin,classification)
+    plt.plot(hemoglobin[classification==1],glucose[classification==1], "k.", label = "Class 1")
+    plt.plot(hemoglobin[classification==0],glucose[classification==0], "r.", label = "Class 0")
+    plt.plot((newhemoglobin-3.1)/(17.8-3.1),(newglucose-70)/(490-70),"bo",markersize=12)
+    plt.xlabel("Hemoglobin")
+    plt.ylabel("Glucose")
+    plt.legend()
+    plt.show()
     
 
 
 # MAIN SCRIPT
 glucose, hemoglobin, classification = openckdfile()
-print(normalizeData(glucose,hemoglobin,classification))
-graphData(glucose, hemoglobin, classification)
-
+newhemo,newgluc=createTestCase()
+print(kNearestNeighborClassifier(5,newgluc,newhemo,glucose,hemoglobin,classification))
+graphTestCase(newgluc,newhemo,glucose,hemoglobin,classification)
