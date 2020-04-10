@@ -80,5 +80,5 @@ def graphTestCase(newglucose, newhemoglobin, glucose, hemoglobin, classification
 # MAIN SCRIPT
 glucose, hemoglobin, classification = openckdfile()
 newhemo,newgluc=createTestCase()
-print(kNearestNeighborClassifier(5,newgluc,newhemo,glucose,hemoglobin,classification))
+# print(kNearestNeighborClassifier(5,newgluc,newhemo,glucose,hemoglobin,classification))
 graphTestCase(newgluc,newhemo,glucose,hemoglobin,classification)
