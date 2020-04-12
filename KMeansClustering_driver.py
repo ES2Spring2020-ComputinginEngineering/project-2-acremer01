@@ -22,6 +22,6 @@ while kmc.determine_end_point(oldclassifications, newclassifications)==False:
     newclassifications=kmc.classification_array(newcentroids, glucose, hemoglobin)
 print(newclassifications)
 print(newcentroids)
-kmc.graphingKMeans(glucose, hemoglobin, newclassifications, newcentroids)
+kmc.graphing_k_means(glucose, hemoglobin, newclassifications, newcentroids)
     
 
