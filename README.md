@@ -1,40 +1,65 @@
 Documentation of Nearest Neighbor, K-Nearest Neighbor, and K-Means Clustering Algorithms
 
+
 File: NearestNeighborClassification
   - this file carries out Nearest Neighbor and K-Nearest Neighbor Classification
+  
   - nearestNeighborClassifier(newglucose, newhemoglobin, glucose, hemoglobin, classification)
     returns the nearest neighbor classification of a test point (newglucose, newhemoglobin) created with
     the createTestCase() function. the data arrays glucose and hemoglobin are imported from
     the ckd file
+    
   - kNearestNeighborClassifier(newglucose, newhemoglobin, glucose, hemoglobin, classification)
     returns the k-nearest neighbor classification of a test point (newglucose, newhemoglobin) created with
     the createTestCase() function. the data arrays glucose and hemoglobin are imported from
     the ckd file.
+    
   - graphTestCase(newglucose, newhemoglobin, glucose, hemoglobin, classification)
     graphs the test case along with the pre-classified data
 
+
 File: KMeansClustering_functions
+
   - this file contains the custom functions used to execute the K-Means Clustering algorithm
+  
   - custom functions:
+  
       //random_centroid_points(k)
+      
           parameters:
+          
               - k: the desired number of centroids
+              
           functionality:
+          
               - creates k random centroid points and adds them to an array, centroidarray
+              
           return values:
+          
               - returns centroid array
       
       //calculate_distance(centglucose, centhemo, glucose, hemoglobin)
+      
           parameters:
+          
               - centglucose: the glucose value of the centroid
+              
               - centhemo: the hemoglobin value of the centroid
+              
               - glucose: the glucose value of the data point
+              
               - hemoglobin: the hemoglobin value of the data point
+              
           functionality:
+          
               - calculates the distance between the centroid point and the data point given as parameters, 
+              
                 called distance
+                
           return values:
+          
               - returns distance
+              
               
       //classification_array(centroids, glucose, hemoglobin)
           parameters:
