@@ -1,6 +1,6 @@
 # Allison Cremer
 # Step 2 and 3 of Project 2
-# This file performs Nearest Neighbor Classification and K-Nearest Neighbot
+# This file performs Nearest Neighbor Classification and K-Nearest Neighbor
 # Classification on a set of glucose and hemoglobin data points
 
 import numpy as np
@@ -87,7 +87,7 @@ def kNearestNeighborClassifier(k, newglucose, newhemoglobin, glucose, hemoglobin
 
 def graphTestCase(newglucose, newhemoglobin, glucose, hemoglobin, classification):
     # graphTestCase graphs the test point along with the data points, 
-    # the test point is bigger and colored black 
+    # the test point is larger than the data points and colored black 
     plt.figure()
     glucose, hemoglobin, classification = normalizeData(glucose, hemoglobin,classification)
     plt.plot(hemoglobin[classification==1],glucose[classification==1], "k.", label = "Class 1")
@@ -103,5 +103,5 @@ def graphTestCase(newglucose, newhemoglobin, glucose, hemoglobin, classification
 # MAIN SCRIPT
 glucose, hemoglobin, classification = openckdfile()
 newhemo,newgluc=createTestCase()
-# print(kNearestNeighborClassifier(5,newgluc,newhemo,glucose,hemoglobin,classification))
+print(kNearestNeighborClassifier(5,newgluc,newhemo,glucose,hemoglobin,classification))
 graphTestCase(newgluc,newhemo,glucose,hemoglobin,classification)

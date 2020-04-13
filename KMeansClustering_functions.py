@@ -99,7 +99,7 @@ def determine_end_point(oldclass, newclass):
 def graphing_k_means(glucose, hemoglobin, classification, centroids):
     # graphing_k_means takes in the glucose and hemoglobin data arrays, the final
     # classification array, and the final centroids array
-    # graphs the glucose and hemoglobin values with different based on their
+    # graphs the glucose and hemoglobin values with different colors based on their
     # classification, and graphs the centroids as diamonds
     plt.figure()
     for i in range(classification.max()+1):
