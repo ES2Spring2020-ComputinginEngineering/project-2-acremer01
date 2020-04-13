@@ -79,7 +79,7 @@ File: KMeansClustering_functions
               - classification: the array of final classification values
               - centroids: the array of the final centroids
           functionality:
-              - graphs the glucose and hemoglobin values, colored based on their final classifications
+              - graphs the glucose and hemoglobin values, which are colored based on their final classifications
               - graphs the final centroids as diamonds
           no return values
        
